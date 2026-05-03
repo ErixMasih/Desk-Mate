@@ -1,32 +1,34 @@
-> [ENGLISH] This project is a clone of Dasai Mochi, the adorable animated character made popular on YouTube. Designed to run on the ESP32 microcontroller, the system renders animated emotes on a TFT display by converting GIFs to C++ code using the powerful tool gif2cpp.
+ESP32 Dev Board + SSD1306 OLED Display Module + TTP223 Capacitive Touch Sensor Module Connection Table
+| OLED Pin | ESP32 Pin |
+| -------- | --------- |
+| VCC      | 3.3V      |
+| GND      | GND       |
+| SDA      | GPIO 21   |
+| SCL      | GPIO 22   |
 
 
-####   Project highlights:
-- Displaying animated Mochi emotes on oled screen
--  Using gif2cpp (https://huykhong.com/IOT/gif2cpp) to convert GIFs into lightweight C++ arrays
--  Built on ESP32 
--  Runs smooth 15 FPS animations on ILI9341 / ST7789 displays
--  Ideal for robotic expressions, smart assistants, or pure cuteness
+| TTP223 Pin | ESP32 Pin |
+| ---------- | --------- |
+| VCC        | 3.3V      |
+| GND        | GND       |
+| OUT        | GPIO 4    |
 
 
-#### What is gif2cpp?
-- https://huykhong.com/IOT/gif2cpp
-- gif2cpp is an open-source tool that converts animated GIFs into C++ header files – perfect for embedding animations in microcontroller projects where you can't use real-time video formats.
+OLED SDA  -> GPIO 21
+OLED SCL  -> GPIO 22
 
+TTP223 OUT -> GPIO 4
 
-#### How to use:
-Tutorial in [my tiktok  ](https://www.tiktok.com/@_huykhong)
-1. Extract emote sections using ffmpeg: (Example commands included)
- `→ ffmpeg -ss ... -to ... -i full.mp4 ... -y emote.gif`
-3. Run gif2cpp to generate .h file
-4.  Include in your ESP32 project.
+All GNDs connected together
+All VCCs connected to 3.3V
 
+Important
+Use 3.3V, NOT 5V
+Make sure OLED address is 0x3C
+If screen stays black, try 0x3D
 
-####  Original Video Credit:
-🎥 Dasai! Mochi Gen 2 All Emotes (almost)
-→ All emotes are inspired and extracted from this video. Full image rights belong to the original creator.
+Your setup is basically:
 
-
-## [VIETNAMESE]
-• Coi vid tiktok của tôi
-https://www.tiktok.com/@_huykhong
+ESP32
+ ├── OLED Display
+ └── TTP223 Touch Button
